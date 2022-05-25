@@ -1,0 +1,81 @@
+<section>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Tax Calculator</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <form [formGroup]="form">
+        <mat-button-toggle-group formControlName="rate">
+          <mat-button-toggle value="10" aria-label="10 percent VAT rate">
+            10%
+          </mat-button-toggle>
+          <mat-button-toggle value="13" aria-label="13 percent VAT rate">
+            13%
+          </mat-button-toggle>
+          <mat-button-toggle value="20" aria-label="20 percent VAT rate">
+            20%
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <div class="values-section">
+          <mat-form-field appearance="outline">
+            <mat-label>Net</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="net"
+              (click)="net?.reset()"
+              (keyup)="valueChanged(net?.value, valueType.NET)"
+            />
+            <mat-error *ngIf="net?.hasError('pattern')">
+              Only <strong>numbers</strong> allowed
+            </mat-error>
+            <mat-error
+              *ngIf="net?.hasError('min') && !net?.hasError('pattern')"
+            >
+              Value must be <strong>greater</strong> than zero
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Gross</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="gross"
+              (click)="gross?.reset()"
+              (keyup)="valueChanged(gross?.value, valueType.GROSS)"
+            />
+            <mat-error *ngIf="gross?.hasError('pattern')">
+              Only <strong>numbers</strong> allowed
+            </mat-error>
+            <mat-error
+              *ngIf="gross?.hasError('min') && !gross?.hasError('pattern')"
+            >
+              Value must be <strong>greater</strong> than zero
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Vat</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="vat"
+              (click)="vat?.reset()"
+              (keyup)="valueChanged(vat?.value, valueType.VAT)"
+            />
+            <mat-error *ngIf="vat?.hasError('pattern')">
+              Only <strong>numbers</strong> allowed
+            </mat-error>
+            <mat-error
+              *ngIf="vat?.hasError('min') && !vat?.hasError('pattern')"
+            >
+              Value must be <strong>greater</strong> than zero
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>

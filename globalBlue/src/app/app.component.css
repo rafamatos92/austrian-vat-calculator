@@ -1,0 +1,32 @@
+.card {
+  margin: 1rem;
+  width: 400px;
+  height: fit-content;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+  height: 100vh;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.values-section {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  margin-top: 1rem;
+}
+
+mat-form-field {
+  max-width: 100px;
+}
+
+form {
+  padding: 1rem;
+}
